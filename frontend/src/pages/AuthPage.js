@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import api from "../api";
 import "../styles.css";
 import VerifyOTP from "../components/VerifyOTP";
 
@@ -81,44 +82,38 @@ const AuthPage = (props) => {
 
     try {
       const endpoint = isLogin ? "/auth/login" : "/auth/signup";
-      const response = await fetch(`http://localhost:5000${endpoint}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: formData.email, password: formData.password }),
+      const response = await api.post(endpoint, { 
+        email: formData.email, 
+        password: formData.password 
       });
 
-      const data = await response.json();
       setIsSubmitting(false);
 
-      if (!response.ok) {
-        setErrors({ api: data.error || "Something went wrong!" });
-      } else {
-        if (isLogin) {
-          // Store token and email
-          if (data.token) {
-            setMessage("✅ Logged in successfully!");
-            setIsLoggedIn(true);
-            
-            // If onLogin handler exists, use it
-            if (onLogin) {
-              onLogin(data.token, formData.email);
-            } else {
-              // Fallback to just setting isLoggedIn
-              localStorage.setItem('authToken', data.token);
-              localStorage.setItem('userEmail', formData.email);
-            }
-            
-            navigate("/");
+      if (isLogin) {
+        // Store token and email
+        if (response.data.token) {
+          setMessage("✅ Logged in successfully!");
+          setIsLoggedIn(true);
+          
+          // If onLogin handler exists, use it
+          if (onLogin) {
+            onLogin(response.data.token, formData.email);
           } else {
-            setErrors({ api: "No authentication token received" });
+            // Fallback to just setting isLoggedIn
+            localStorage.setItem('authToken', response.data.token);
+            localStorage.setItem('userEmail', formData.email);
           }
+          
+          navigate("/");
         } else {
-          setMessage("✅ Signup successful! Please verify your OTP.");
-          setOtpSent(true);
+          setErrors({ api: "No authentication token received" });
         }
+      } else {
+        setMessage("✅ Signup successful! Please verify your OTP.");
+        setOtpSent(true);
       }
     } catch (error) {
-      setErrors({ api: "❌ Server error! Please try again." });
+      setErrors({ api: error.response?.data?.error || "❌ Server error! Please try again." });
       setIsSubmitting(false);
     }
   };

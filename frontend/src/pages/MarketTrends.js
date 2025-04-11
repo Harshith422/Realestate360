@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -87,45 +87,52 @@ const MarketTrends = () => {
       }
     });
 
-    try {
-      // For demo purposes, generate some random data to simulate a response
-      const mockResponse = generateMockPrediction(formData);
-      setTimeout(() => {
-        setPrediction(mockResponse);
-        setLoading(false);
-      }, 1500);
-      
-      // Comment out actual API call for demo
-      /*
-      const response = await axios.post('http://localhost:5000/api/predict-price', formData);
-      if (response.data && typeof response.data.currentPrice === 'number') {
-        // Convert projections from object format to array format
-        let quarterlyProjections = [];
-        if (response.data.projections) {
-          // Handle object format (q1, q2, q3, q4)
-          quarterlyProjections = [
-            { price: response.data.projections.q1 },
-            { price: response.data.projections.q2 },
-            { price: response.data.projections.q3 },
-            { price: response.data.projections.q4 }
-          ];
-        }
+    // Transform form data to match API expectations
+    const apiData = {
+      city: formData.city,
+      area: Number(formData.sqft),
+      bedrooms: Number(formData.bhk),
+      propertyType: formData.propertyType
+    };
 
+    try {
+      // For demonstration purposes, you can uncomment the API call and comment out the mock data
+      // when ready to connect to the real backend
+      
+      // Uncomment this section to use real API
+      /*
+      const response = await api.post('/api/market-trends', apiData);
+      
+      if (response.data) {
+        // Extract data from response
+        const { current_price, projections, roi } = response.data;
+        
+        // Format quarterly projections
+        const quarterlyProjections = Object.keys(projections || {})
+          .map(key => ({ price: projections[key] }));
+        
         setPrediction({
-          currentPrice: response.data.currentPrice,
+          currentPrice: current_price,
           quarterlyProjections: quarterlyProjections,
           roi: {
-            totalGrowth: response.data.roi?.totalGrowth || null,
-            annualizedROI: response.data.roi?.annualizedROI || null,
-            quarterlyGrowth: response.data.roi?.quarterlyGrowth || null
+            totalGrowth: roi?.total_growth || 0,
+            annualizedROI: roi?.annualized_roi || 0,
+            quarterlyGrowth: roi?.quarterly_growth || 0
           }
         });
       } else {
         throw new Error('Invalid prediction data received');
       }
       */
+      
+      // For demo purposes, generate mock data
+      const mockResponse = generateMockPrediction(formData);
+      setTimeout(() => {
+        setPrediction(mockResponse);
+        setLoading(false);
+      }, 1500);
     } catch (err) {
-      setError('Error predicting price. Please try again.');
+      setError('Error predicting price: ' + (err.response?.data?.error || err.message || 'Please try again.'));
       console.error('Prediction error:', err);
       setLoading(false);
     }

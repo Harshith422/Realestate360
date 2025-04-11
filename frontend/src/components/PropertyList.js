@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import api from "../api";
 import "../styles.css";
 import "../styles/EditProperty.css";
 import "../styles/Loading.css";
@@ -208,13 +209,9 @@ const PropertyList = ({ isLoggedIn, authToken, userEmail }) => {
   const fetchProperties = async () => {
     setLoading(true);
     try {
-      const response = await fetch("http://localhost:5000/properties");
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      setProperties(data);
-      setFilteredProperties(data);
+      const response = await api.get("/properties");
+      setProperties(response.data);
+      setFilteredProperties(response.data);
       setError(null);
     } catch (err) {
       console.error("Error fetching properties:", err);
@@ -254,31 +251,15 @@ const PropertyList = ({ isLoggedIn, authToken, userEmail }) => {
   };
 
   const deleteProperty = async (propertyId) => {
-    if (!isLoggedIn || !authToken) {
-      console.error("Must be logged in to delete a property");
-      return;
-    }
-
-    try {
-      const response = await fetch(`http://localhost:5000/properties/${propertyId}`, {
-        method: "DELETE",
-        headers: {
-          'Authorization': `Bearer ${authToken}`,
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "Failed to delete property");
+    if (window.confirm("Are you sure you want to delete this property?")) {
+      try {
+        await api.delete(`/properties/${propertyId}`);
+        setProperties(properties.filter((property) => property.id !== propertyId));
+        setFilteredProperties(filteredProperties.filter((property) => property.id !== propertyId));
+      } catch (error) {
+        console.error("Error deleting property:", error);
+        alert("Failed to delete property. Please try again later.");
       }
-
-      // Remove the deleted property from the state
-      setProperties(properties.filter(property => property.id !== propertyId));
-      setFilteredProperties(filteredProperties.filter(property => property.id !== propertyId));
-    } catch (error) {
-      console.error("Error deleting property:", error);
-      throw error;
     }
   };
 
