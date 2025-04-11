@@ -22,6 +22,18 @@ try:
 except Exception as e:
     logger.error(f"Error initializing HPI data: {str(e)}", exc_info=True)
 
+# Root endpoint
+@app.route('/', methods=['GET'])
+def root():
+    return jsonify({
+        "message": "Realestate360 Python API is running",
+        "version": "1.0.0",
+        "endpoints": {
+            "health": "/health",
+            "market_trends": "/api/market-trends"
+        }
+    })
+
 # Add a health check endpoint
 @app.route('/health', methods=['GET'])
 def health_check():

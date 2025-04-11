@@ -23,6 +23,22 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: '50mb' }));
 app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
+// Root endpoint handler
+app.get("/", (req, res) => {
+  res.status(200).json({
+    message: "Realestate360 API is running",
+    version: "1.0.0",
+    endpoints: {
+      health: "/health",
+      auth: "/auth",
+      properties: "/properties",
+      users: "/users",
+      appointments: "/appointments",
+      marketData: "/api/market-trends"
+    }
+  });
+});
+
 // Health check endpoint
 app.get("/health", (req, res) => {
   res.status(200).json({ status: "ok", message: "Server is running" });
