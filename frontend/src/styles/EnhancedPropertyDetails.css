@@ -1,0 +1,38 @@
+.back-arrow {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: none;
+  border: none;
+  color: #8B4513;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  padding: 8px;
+  gap: 4px;
+}
+
+.back-arrow:hover {
+  transform: translateX(-5px);
+  color: #A0522D;
+}
+
+.back-arrow::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #8B4513;
+  transition: width 0.3s ease;
+}
+
+.back-arrow:hover::before {
+  width: 100%;
+} 

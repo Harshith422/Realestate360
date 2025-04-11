@@ -1,0 +1,310 @@
+.market-trends {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.market-trends h3 {
+  color: #333;
+  margin-bottom: 24px;
+  font-size: 1.5rem;
+}
+
+.market-trends-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.trend-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.trend-card h4 {
+  color: #666;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.trend-card .price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.trend-card .percentage {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #27ae60;
+}
+
+.hpi-chart {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hpi-chart h4 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.future-projections {
+  margin-top: 30px;
+}
+
+.future-projections h4 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.projections-table {
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.projections-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projections-table th,
+.projections-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.projections-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.projections-table tr:last-child td {
+  border-bottom: none;
+}
+
+.projections-table tr:hover {
+  background-color: #f8f9fa;
+}
+
+.positive-growth {
+  color: #27ae60;
+}
+
+.negative-growth {
+  color: #e74c3c;
+}
+
+.market-source {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #777;
+  text-align: right;
+  font-style: italic;
+}
+
+.market-trends.loading {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
+
+.market-trends.error {
+  text-align: center;
+  padding: 30px;
+  border: 1px solid #f8d7da;
+  border-radius: 8px;
+  background-color: #fff5f5;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.error-icon {
+  font-size: 3rem;
+  color: #dc3545;
+  margin-bottom: 20px;
+}
+
+.error-details {
+  max-width: 500px;
+}
+
+.technical-error {
+  font-family: monospace;
+  background: #f8f9fa;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #666;
+  margin: 15px 0;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.retry-button {
+  background: linear-gradient(to right, #0066CC, #4D94FF);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.retry-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 102, 204, 0.3);
+}
+
+.retry-button i {
+  margin-right: 8px;
+}
+
+.help-text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
+}
+
+.market-trends.error h3 {
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.market-trends.error p {
+  margin: 10px 0;
+}
+
+.market-trends.error .error-details {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+.price-comparison {
+  margin: 30px 0;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.price-comparison h4 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+}
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.comparison-card {
+  background: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.comparison-card h5 {
+  color: #666;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.comparison-card .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+.price-difference {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.price-difference.positive {
+  color: #27ae60;
+}
+
+.price-difference.negative {
+  color: #e74c3c;
+}
+
+.difference-percentage {
+  font-size: 0.9rem;
+  margin-left: 5px;
+}
+
+.deal-analysis {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.deal-analysis h5 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.deal-rating {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.deal-rating.good-deal {
+  color: #27ae60;
+}
+
+.deal-rating.bad-deal {
+  color: #e74c3c;
+}
+
+.deal-explanation {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 768px) {
+  .market-trends-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .projections-table {
+    font-size: 0.9rem;
+  }
+  
+  .projections-table th,
+  .projections-table td {
+    padding: 8px 10px;
+  }
+} 
+

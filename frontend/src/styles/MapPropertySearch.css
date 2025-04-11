@@ -1,0 +1,693 @@
+.map-property-search {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.map-container {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.map-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.search-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.search-bar-container {
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.search-bar {
+  display: flex;
+  width: 100%;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.clear-search {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+.clear-search:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.location-search-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.location-search-input:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
+}
+
+.search-button {
+  padding: 10px 15px;
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-button:hover {
+  background-color: #3367d6;
+}
+
+.search-button:disabled {
+  background-color: #a9a9a9;
+  cursor: not-allowed;
+}
+
+.location-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+  padding: 10px 15px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f8f9fa;
+}
+
+.suggestion-icon {
+  font-size: 20px;
+  color: #4285f4;
+}
+
+.suggestion-text {
+  flex: 1;
+}
+
+.suggestion-name {
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.suggestion-address {
+  font-size: 14px;
+  color: #70757a;
+}
+
+.radius-control {
+  margin: 15px 0;
+}
+
+.radius-control label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #333;
+}
+
+.radius-control input[type="range"] {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(to right, #ff8f00, #ffb74d);
+  outline: none;
+  -webkit-appearance: none;
+  margin: 10px 0;
+}
+
+.radius-control input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #ff8f00;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.radius-control input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2px solid #ff8f00;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.search-tip {
+  display: block;
+  margin-top: 10px;
+  color: #666;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.properties-count {
+  margin-top: 15px;
+  padding: 10px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* Property popup styling */
+.property-popup {
+  min-width: 200px;
+  padding: 5px;
+}
+
+.property-popup h3 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.property-price {
+  color: #4285f4;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+.property-location {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.view-property-link {
+  display: inline-block;
+  background-color: #4285f4;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+.view-property-link:hover {
+  background-color: #3367d6;
+}
+
+@media (max-width: 768px) {
+  .search-options {
+    flex-direction: column;
+  }
+  
+  .search-bar-container {
+    width: 100%;
+  }
+}
+
+/* Responsive styles for the map */
+@media (max-width: 600px) {
+  .map-container {
+    height: 400px !important;
+  }
+}
+
+/* Enhance map error styling */
+.map-error {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.map-error h3 {
+  color: #495057;
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.map-error p {
+  margin-bottom: 15px;
+  color: #6c757d;
+}
+
+.map-fallback {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+}
+
+.map-fallback label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+
+/* Enhance manual location input styling */
+.manual-location-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 16px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  background-color: white;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.manual-location-input:focus {
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Loading spinner enhancements */
+.map-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #ff6d00;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Google Maps Autocomplete styles */
+.pac-container {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #e0e0e0;
+  margin-top: -5px;
+  font-family: inherit;
+  z-index: 1050 !important;
+}
+
+.pac-item {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.pac-item:hover {
+  background-color: rgba(255, 143, 0, 0.05);
+}
+
+.pac-item-selected {
+  background-color: rgba(255, 143, 0, 0.1);
+}
+
+/* Improve marker visibility */
+.map-property-search .gm-style img[src*="red-dot.png"] {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.5)) !important;
+  opacity: 1 !important;
+}
+
+/* Add styles for the simplified map interface */
+.map-property-search.simplified {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.map-property-search.simplified .map-container {
+  height: 400px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.map-instructions {
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.map-instructions p {
+  margin: 0 0 8px 0;
+}
+
+.map-instructions ol {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.map-instructions li {
+  margin-bottom: 5px;
+}
+
+.location-coordinates {
+  text-align: right;
+  color: #6c757d;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Responsive optimizations */
+@media (max-width: 768px) {
+  .map-property-search.simplified .map-container {
+    height: 350px;
+  }
+  
+  .map-instructions {
+    font-size: 13px;
+  }
+  
+  .location-search-input {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .map-property-search.simplified .map-container {
+    height: 300px;
+  }
+}
+
+/* Make sure the info window is readable */
+.gm-style-iw {
+  font-family: inherit !important;
+  font-size: 13px;
+}
+
+.gm-style-iw p {
+  margin: 3px 0;
+  font-size: 13px;
+}
+
+.gm-style-iw p:first-child {
+  color: #3498db;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Make InfoWindow content more appealing */
+.gm-style-iw-d {
+  overflow: hidden !important;
+  max-width: 240px;
+}
+
+/* Adjust input padding to accommodate the clear button */
+.search-input-wrapper .location-search-input {
+  padding-right: 40px;
+}
+
+/* Add styles for the map crosshair */
+.map-with-crosshair-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.map-crosshair {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.crosshair-horizontal,
+.crosshair-vertical {
+  position: absolute;
+  background-color: rgba(255, 69, 0, 0.8);
+  border-radius: 2px;
+  box-shadow: 0 0 3px rgba(255, 255, 255, 0.7);
+}
+
+.crosshair-horizontal {
+  width: 20px;
+  height: 2px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.crosshair-vertical {
+  width: 2px;
+  height: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Add animation for the crosshair */
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+.map-crosshair::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 8px;
+  height: 8px;
+  background-color: rgba(255, 69, 0, 0.8);
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+/* Add instruction tooltip near the crosshair */
+.map-with-crosshair-container::before {
+  content: 'Move map to position crosshair over your property';
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  font-weight: 500;
+}
+
+.map-with-crosshair-container:hover::before {
+  opacity: 1;
+}
+
+/* Add styles for the center-select button */
+.center-select-button {
+  position: absolute;
+  bottom: 50px;  /* Positioned above the tooltip */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #4285F4;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: all 0.2s ease;
+  text-decoration: none;  /* Prevent underline if it's a link */
+  outline: none;  /* Remove outline on focus */
+  user-select: none;  /* Prevent text selection */
+}
+
+.center-select-button:hover {
+  background-color: #3367d6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.center-select-button:active {
+  transform: translateX(-50%) scale(0.98);
+}
+
+.center-select-button:focus {
+  outline: none;  /* Remove outline on focus */
+}
+
+.pin-icon {
+  font-size: 16px;
+}
+
+.location-search-suggestion-item-active {
+  background-color: #f0f7ff;
+  cursor: pointer;
+}
+
+.location-search-suggestion-item-active .location-search-suggestion-description {
+  font-weight: 500;
+}
+
+.location-search-clear-button {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  font-size: 16px;
+  padding: 5px;
+  z-index: 10;
+  display: none;
+}
+
+.location-search-input-container:hover .location-search-clear-button,
+.location-search-input:focus ~ .location-search-clear-button {
+  display: block;
+}
+
+.location-search-clear-button:hover {
+  color: #4A90E2;
+}
+
+.property-search-button {
+  background: linear-gradient(to right, #4A90E2, #5DA9E9);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.property-search-filter-button {
+  background: transparent;
+  border: 2px solid #4A90E2;
+  color: #4A90E2;
+  border-radius: 8px;
+  padding: 8px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-right: 10px;
+}
+
+.property-filter-item label.active {
+  border-top: 4px solid #5DA9E9;
+  background-color: #f0f7ff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.range-slider-track {
+  background-color: rgba(74, 144, 226, 0.05);
+  height: 8px;
+  width: 100%;
+  border-radius: 8px;
+  position: relative;
+}
+
+.range-slider-track-active {
+  position: absolute;
+  height: 100%;
+  background-color: rgba(74, 144, 226, 0.1);
+  border-radius: 8px;
+} 

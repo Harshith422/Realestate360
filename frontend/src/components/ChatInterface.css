@@ -1,0 +1,409 @@
+/* Calendar Styles */
+.calendar-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.calendar-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.1em;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+}
+
+.calendar-date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.calendar-date:hover {
+  background: #e9e9e9;
+  transform: translateY(-2px);
+}
+
+.calendar-date.selected {
+  background: #8B4513;
+  color: white;
+  border-color: #8B4513;
+}
+
+.calendar-date.disabled {
+  background: #e0e0e0;
+  color: #999;
+  cursor: not-allowed;
+  border-color: #ccc;
+  opacity: 0.7;
+}
+
+.calendar-date.disabled:hover {
+  transform: none;
+  background: #e0e0e0;
+}
+
+.calendar-date .day {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.calendar-date .month {
+  font-size: 0.8em;
+  text-transform: uppercase;
+}
+
+.calendar-date .already-booked {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  color: #4CAF50;
+  font-size: 0.8em;
+}
+
+/* Time Slots Styles */
+.time-slots-container {
+  margin: 20px 0;
+  padding: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 10px;
+}
+
+.time-slot-button {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background: #f9f9f9;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.time-slot-button:hover {
+  background: #e9e9e9;
+  transform: translateY(-2px);
+}
+
+.time-slot-button.selected {
+  background: #8B4513;
+  color: white;
+  border-color: #8B4513;
+}
+
+/* Chat Interface Styles */
+.chat-interface {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 400px;
+  max-height: 600px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.chat-header {
+  padding: 20px;
+  background: linear-gradient(135deg, #8B4513, #333333);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(139, 69, 19, 0.2);
+}
+
+.chat-header h3 {
+  margin: 0;
+  font-size: 1.3em;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.close-button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 500px;
+  scrollbar-width: thin;
+  scrollbar-color: #8B4513 #f0f0f0;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 3px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #8B4513;
+  border-radius: 3px;
+}
+
+.message {
+  max-width: 85%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 8px;
+  animation: fadeIn 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message.user {
+  align-self: flex-end;
+  background: linear-gradient(135deg, #8B4513, #333333);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.message.system {
+  align-self: flex-start;
+  background: #f8f9fa;
+  color: #333;
+  border-bottom-left-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.message-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.option-button {
+  padding: 10px 18px;
+  border: 2px solid #8B4513;
+  border-radius: 25px;
+  background: transparent;
+  color: #8B4513;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.95em;
+}
+
+.option-button:hover {
+  background: #8B4513;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+}
+
+.message-input-container {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.message-input {
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  resize: none;
+  min-height: 80px;
+  font-size: 0.95em;
+  transition: all 0.3s ease;
+  background: #f8f9fa;
+}
+
+.message-input:focus {
+  border-color: #8B4513;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+  background: white;
+}
+
+.submit-button {
+  padding: 12px 24px;
+  background: linear-gradient(135deg, #8B4513, #333333);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 1em;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.submit-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.2);
+  background: linear-gradient(135deg, #333333, #8B4513);
+}
+
+/* Calendar and Time Slots Styles */
+.calendar-container, .time-slots-container {
+  margin: 16px 0;
+  padding: 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.3s ease;
+}
+
+.calendar-header {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.calendar-header h4 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.calendar-grid, .time-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 8px;
+}
+
+.calendar-date, .time-slot-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border: 2px solid #eee;
+  border-radius: 12px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.calendar-date:hover, .time-slot-button:hover {
+  border-color: #8B4513;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 69, 19, 0.1);
+}
+
+.calendar-date.selected, .time-slot-button.selected {
+  background: linear-gradient(135deg, #8B4513, #333333);
+  color: white;
+  border-color: transparent;
+}
+
+.calendar-date.disabled {
+  background: #f8f9fa;
+  color: #aaa;
+  cursor: not-allowed;
+  border-color: #eee;
+  opacity: 0.7;
+}
+
+.calendar-date .day {
+  font-size: 1.3em;
+  font-weight: bold;
+}
+
+.calendar-date .month {
+  font-size: 0.8em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.calendar-date .already-booked {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: #4CAF50;
+  font-size: 0.9em;
+  background: white;
+  border-radius: 50%;
+  padding: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .chat-interface {
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    right: 0;
+    border-radius: 0;
+  }
+
+  .chat-header {
+    border-radius: 0;
+  }
+
+  .message {
+    max-width: 90%;
+  }
+
+  .calendar-grid, .time-slots-grid {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  }
+} 
+

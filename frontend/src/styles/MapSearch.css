@@ -1,0 +1,21 @@
+/* Map Search Container */
+.map-search-container {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.map-search-container h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.map-search-container p {
+  color: #666;
+  margin-bottom: 20px;
+  font-size: 16px;
+} 
