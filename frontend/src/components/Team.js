@@ -5,28 +5,23 @@ import { motion } from 'framer-motion';
 const teamMembers = [
   { 
     name: "Sucharan", 
-    role: "CEO", 
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1000&auto=format&fit=crop",
+    image: "/images/Charan.jpg",
   },
   { 
     name: "Sriram", 
-    role: "CTO", 
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1000&auto=format&fit=crop",
+    image: "/images/Sriram.jpg",
   },
   { 
     name: "Harshith", 
-    role: "Marketing Head", 
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1000&auto=format&fit=crop",
+    image: "/images/Harshith.jpg",
   },
   { 
     name: "Bhargav", 
-    role: "Lead Developer", 
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1000&auto=format&fit=crop",
+    image: "/images/Bhargav.jpg",
   },
   { 
     name: "Viswanadh", 
-    role: "UI/UX Designer", 
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1000&auto=format&fit=crop",
+    image: "/images/Viswanadh.jpg",
   }
 ];
 
@@ -89,7 +84,6 @@ const Team = () => {
                 />
               </div>
               <h3 className="modern-team-name">{member.name}</h3>
-              <p className="modern-team-role">{member.role}</p>
             </motion.div>
           ))}
         </div>
