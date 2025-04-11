@@ -1100,13 +1100,6 @@ const Home = () => {
               </div>
               <h3 style={{ color: "#000000" }}>Property Sales</h3>
               <p style={{ color: "#000000" }}>Find your perfect property with our extensive listings and expert guidance.</p>
-              <a href="/services/sales" className="service-link" style={{ 
-                color: colors.shinyOrange,
-                fontWeight: "bold" 
-              }}>
-                <span>Learn More</span>
-                <i className="fas fa-arrow-right"></i>
-              </a>
             </div>
             <div className="service-card" style={{ 
               background: '#FFFFFF',
@@ -1119,13 +1112,6 @@ const Home = () => {
               </div>
               <h3 style={{ color: "#000000" }}>Investment Advisory</h3>
               <p style={{ color: "#000000" }}>Make informed decisions with our market analysis and investment strategies.</p>
-              <a href="/services/investment" className="service-link" style={{ 
-                color: colors.shinyOrange,
-                fontWeight: "bold" 
-              }}>
-                <span>Learn More</span>
-                <i className="fas fa-arrow-right"></i>
-              </a>
             </div>
             <div className="service-card" style={{ 
               background: '#FFFFFF',
@@ -1138,13 +1124,6 @@ const Home = () => {
               </div>
               <h3 style={{ color: "#000000" }}>Property Management</h3>
               <p style={{ color: "#000000" }}>Let us handle the complexities of managing your property investments.</p>
-              <a href="/services/management" className="service-link" style={{ 
-                color: colors.shinyOrange,
-                fontWeight: "bold" 
-              }}>
-                <span>Learn More</span>
-                <i className="fas fa-arrow-right"></i>
-              </a>
             </div>
           </div>
         </section>
@@ -1401,9 +1380,9 @@ const Home = () => {
                 lineHeight: "1.4"
               }}>
                 {[
-                  { icon: "fas fa-map-marker-alt", content: "123 Real Estate Avenue<br/>San Francisco, CA 94105", link: null },
-                  { icon: "fas fa-phone-alt", content: "+1 (555) 123-4567", link: "tel:+15551234567" },
-                  { icon: "fas fa-envelope", content: "info@realestate360.com", link: "mailto:info@realestate360.com" },
+                  { icon: "fas fa-map-marker-alt", content: "Amrita Vishwa Vidyapeetham<br/>Coimbatore", link: null },
+                  { icon: "fas fa-phone-alt", content: "7013704561", link: "tel:7013704561" },
+                  { icon: "fas fa-envelope", content: "potnuriharshith@gmail.com", link: "mailto:potnuriharshith@gmail.com" },
                 ].map((item, index) => (
                   <div key={index} className="contact-item" style={{ 
                     display: "flex", 
