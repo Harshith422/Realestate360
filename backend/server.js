@@ -9,14 +9,37 @@ const appointmentRoutes = require("./routes/appointments");
 const marketRoutes = require("./routes/marketRoutes");
 
 const app = express();
-app.use(cors());
-app.use(bodyParser.json());
 
+// Configure CORS
+const corsOptions = {
+  origin: process.env.FRONTEND_URL || "*",
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+
+// Middleware
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
+
+// Health check endpoint
+app.get("/health", (req, res) => {
+  res.status(200).json({ status: "ok", message: "Server is running" });
+});
+
+// API routes
 app.use("/auth", authRoutes);
 app.use("/properties", propertyRoutes);
 app.use("/users", userRoutes);
 app.use("/appointments", appointmentRoutes);
 app.use("/api", marketRoutes);
+
+// Basic error handling
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).json({ error: "Something went wrong on the server" });
+});
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

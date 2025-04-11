@@ -2,18 +2,30 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from market import forecast_price, load_hpi_data
 import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+
+# Configure CORS properly
+cors_origin = os.environ.get('FRONTEND_URL', '*')
+CORS(app, resources={r"/*": {"origins": cors_origin}})
 
 # Initialize HPI data
-logger.info("Initializing HPI data...")
-load_hpi_data()
-logger.info("HPI data initialized successfully")
+try:
+    logger.info("Initializing HPI data...")
+    load_hpi_data()
+    logger.info("HPI data initialized successfully")
+except Exception as e:
+    logger.error(f"Error initializing HPI data: {str(e)}", exc_info=True)
+
+# Add a health check endpoint
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "ok", "message": "Python backend is running"}), 200
 
 @app.route('/api/market-trends', methods=['POST'])
 def get_market_trends():
@@ -53,6 +65,8 @@ def get_market_trends():
         logger.error(f"Error in get_market_trends: {str(e)}", exc_info=True)
         return jsonify({'error': str(e)}), 500
 
+# Use Gunicorn in production
 if __name__ == '__main__':
-    logger.info("Starting Flask server...")
-    app.run(debug=True) 
+    port = int(os.environ.get('PORT', 5000))
+    # In production, Gunicorn will serve the app instead of this
+    app.run(host='0.0.0.0', port=port, debug=False) 

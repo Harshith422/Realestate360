@@ -17,6 +17,12 @@
     },
     "scripts": {
         "start": "node server.js",
-        "dev": "node --trace-warnings server.js"
+        "dev": "node --trace-warnings server.js",
+        "start-python": "chmod +x ./start-python.sh && ./start-python.sh",
+        "install-python-deps": "pip install -r ../requirements.txt",
+        "postinstall": "npm run install-python-deps || echo 'Python dependencies not installed'"
+    },
+    "engines": {
+        "node": ">=14.0.0"
     }
 }
