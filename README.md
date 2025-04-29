@@ -51,8 +51,8 @@ Important: The Cloud usage used in this project have been deactivated to prevent
 ### Prerequisites
 - Node.js (v14+)
 - Python (v3.8+)
-- MongoDB
-
+- React.js
+  
 ### Model Files
 **Important:** This repository doesn't include model files and datasets due to size limitations. 
 Please see [MODELS.md](MODELS.md) for instructions on how to obtain these files.
