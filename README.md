@@ -6,6 +6,8 @@ A comprehensive real estate platform that combines property listings with advanc
 
 You Can Check My Project Here : 
 https://realestate360-frontend.onrender.com
+
+Important: The Cloud usage used in this project have been deactivated to prevent unintended usage and potential charges. If you wish to run this project, please generate and use your own Keys.
 ## Features
 
 - **Property Listings & Management**
@@ -78,5 +80,3 @@ python app.py
 ## Data
 The application uses real estate data for price predictions. Due to file size constraints, the data files are not included in the repository.
 
-## License
-MIT
